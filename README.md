@@ -1,5 +1,5 @@
 ## Requisitos funcionais:
-- [ ] Usuário deve ser capaz de se registrar e fazer login/logout;
+- [X] Usuário deve ser capaz de se registrar e fazer login/logout;
 - [X] Usuário deve ser capaz de fazer checkin (cadastrar um carro no estacionamento);
 - [ ] Usuário deve ser capaz de visualizar qual o número da vaga reservada por ele;
 - [ ] Usuário deve ser capaz de fazer checkout (retirar um carro do estacionamento);
@@ -7,8 +7,6 @@
 
 ## Regras de negócio:
 - [X] Só será possível o check-in de um carro por vez por usuário;
-- [ ] Se o check-out for feito em até 20 minutos após o check-in, a estadia não será cobrada;
-- [ ] 
 
 ## Requisitos não-funcionais:
-- [ ] A senha do usuário precisa estar criptografada;
+- [X] A senha do usuário precisa estar criptografada;
