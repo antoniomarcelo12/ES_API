@@ -5,6 +5,7 @@
 - [ ] Usuário deve ser capaz de fazer checkout (retirar um carro do estacionamento);
 - [ ] Usuário deve poder ver o histórico de check-ins feitos por ele;
 
+
 ## Regras de negócio:
 - [X] Só será possível o check-in de um carro por vez por usuário;
 
