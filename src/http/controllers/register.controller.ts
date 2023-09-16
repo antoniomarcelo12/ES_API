@@ -34,5 +34,5 @@ export async function registerController(request: FastifyRequest, reply: Fastify
     }
 
 
-    return reply.status(201).send()
+    return reply.status(201).send({ code: 201, message: "usuário cadastrado com sucesso."})
 }
