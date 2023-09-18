@@ -1,9 +1,6 @@
 import request from "supertest"
 import { app } from "../../app" 
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
-import { hash } from "bcryptjs"
-import { InvalidCredentialsError } from "../../use-cases/errors/invalid-credentials-error"
-
 
 describe('Authenticate (e2e)', () => {
     beforeAll(async () => {
@@ -16,7 +13,7 @@ describe('Authenticate (e2e)', () => {
 
     it('should be able to authenticate', async () => {
         await request(app.server)
-                        .post('/users')
+                        .post('/register')
                         .send({
                             nome: "João Teste",
                             email: "teste@gmail.com",
@@ -24,14 +21,14 @@ describe('Authenticate (e2e)', () => {
                             })
         
                              const response = await request(app.server)
-                                                    .post('/session')
+                                                    .post('/login')
                                                     .send({
                                                         email: "teste@gmail.com",
                                                         password: '123456'
                                                     })
 
                                                     expect(response.statusCode).toEqual(200)
-                                                    expect(response.body).toEqual({ token: expect.any(String) })
+                                                    expect(response.body).toEqual(expect.objectContaining({ token: expect.any(String) }))
 
     })
 })

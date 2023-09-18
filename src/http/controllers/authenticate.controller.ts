@@ -5,11 +5,6 @@ import { AuthenticateUseCase } from "../../use-cases/authenticate"
 import { InvalidCredentialsError } from "../../use-cases/errors/invalid-credentials-error"
 import { makeAuthenticateUseCase } from "../../use-cases/factories/make-authenticate-use-case"
 
-export interface Teste {
-    sign: {
-        sub: string
-    }
-}
 
 export async function authenticateController(request: FastifyRequest, reply: FastifyReply) {
     const authenticateBodySchema = z.object({
@@ -38,9 +33,10 @@ export async function authenticateController(request: FastifyRequest, reply: Fas
                 expiresIn: '7d'
             }
         })
+        const userId = user.id
         
         return reply.setCookie('refreshToken', refreshToken, { path: '/', secure: true, sameSite: true, httpOnly: true }).status(200).send({
-            token
+            token, userId
         })
 
     }catch(err) {

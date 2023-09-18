@@ -4,6 +4,7 @@ import { ZodError } from "zod";
 import { env } from "./env";
 import { fastifyJwt } from "@fastify/jwt";
 import fastifyCookie from "@fastify/cookie";
+import fastifyCors from "@fastify/cors";
 
 
 export const app = fastify()
@@ -20,12 +21,17 @@ app.register(fastifyJwt, {
     }
 })
 
+app.register(fastifyCors, {
+    origin: 'http://localhost:5173'
+})
+
 app.register(fastifyCookie)
 app.register(appRoutes)
 
 
 app.setErrorHandler((error, _request, reply) => {
     if(error instanceof ZodError) {
+        console.log("_request.body: ", _request.body)
         return reply.status(400).send({ message: 'Validation error.', issues: error.format() })
     }
     if(env.NODE_ENV !== 'production') {

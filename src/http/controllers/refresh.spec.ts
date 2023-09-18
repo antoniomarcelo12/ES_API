@@ -13,7 +13,7 @@ describe('Refresh token (e2e)', () => {
 
     it('should be able to refresh a token', async () => {
         await request(app.server)
-                        .post('/users')
+                        .post('/register')
                         .send({
                             nome: "João Teste",
                             email: "teste@gmail.com",
@@ -21,7 +21,7 @@ describe('Refresh token (e2e)', () => {
                             })
         
                              const authResponse = await request(app.server)
-                                                    .post('/session')
+                                                    .post('/login')
                                                     .send({
                                                         email: "teste@gmail.com",
                                                         password: '123456'
